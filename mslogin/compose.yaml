@@ -1,0 +1,11 @@
+#services:
+#  mysql:
+#    image: 'mysql:latest'
+#    container_name: mysql-container
+#    environment:
+#      - 'MYSQL_DATABASE=mslogindb'
+#      - 'MYSQL_PASSWORD=1234'
+#      - 'MYSQL_ROOT_PASSWORD=321'
+#      - 'MYSQL_USER=user'
+#    ports:
+#      - '3307:3306'
