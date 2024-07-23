@@ -1,0 +1,61 @@
+services:
+  mongo-db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: mongo-db
+    volumes:
+      - ./db/:/data/db
+    networks:
+      - my_network
+
+  mscarrinho:
+    build:
+      context: ./mscarrinho
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    container_name: api-mscarrinho
+    links:
+      - mongo-db
+    networks:
+      - my_network
+    
+  msitens:
+    build:
+      context: ./msitens
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    container_name: api-msitens
+    links:
+      - mongo-db
+    networks:
+      - my_network
+
+  mslogin:
+    build:
+      context: ./mslogin
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: api-mslogin
+    links:
+      - mongo-db
+    networks:
+      - my_network
+
+  mspagamento:
+    build: 
+      context: ./mspagamento
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    container_name: api-mspagamento
+    links:
+      - mongo-db
+    networks:
+      - my_network
+
+networks:
+  my_network:

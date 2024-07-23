@@ -15,4 +15,8 @@ public class ItemService {
     public void cadastrarItem(ItemRequest itemRequest){
         itemRepository.save(new Item(itemRequest));
     }
+
+    public Item retornarItem(String id) {
+        return itemRepository.findById(id).get();
+    }
 }
